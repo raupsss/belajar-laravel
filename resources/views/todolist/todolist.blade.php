@@ -9,8 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
-    <script src="https://kit.fontawesome.com/955edffd61.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://kit.fontawesome.com/955edffd61.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
 </head>
 
 
@@ -55,20 +55,56 @@
             }
 
             #radius-shape-1 {
-                height: 220px;
-                width: 220px;
-                top: -60px;
-                left: -130px;
+                height: 120px;
+                width: 120px;
+                top: -50px;
+                left: -10px;
                 background: radial-gradient(#44006b, #ad1fff);
                 overflow: hidden;
             }
 
             #radius-shape-2 {
-                border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-                bottom: -60px;
-                right: -110px;
-                width: 300px;
-                height: 300px;
+                height: 120px;
+                width: 120px;
+                top: -50px;
+                left: 550px;
+                background: radial-gradient(#44006b, #ad1fff);
+                overflow: hidden;
+            }
+
+            #radius-shape-1-2 {
+                height: 140px;
+                width: 140px;
+                top: -120px;
+                left: -70px;
+                background: radial-gradient(#44006b, #ad1fff);
+                overflow: hidden;
+            }
+
+            #radius-shape-2-2 {
+                height: 140px;
+                width: 140px;
+                top: -120px;
+                left: 590px;
+                background: radial-gradient(#44006b, #ad1fff);
+                overflow: hidden;
+            }
+
+
+            #radius-shape-1-3 {
+                height: 160px;
+                width: 160px;
+                top: -200px;
+                left: -120px;
+                background: radial-gradient(#44006b, #ad1fff);
+                overflow: hidden;
+            }
+
+            #radius-shape-2-3 {
+                height: 160px;
+                width: 160px;
+                top: -200px;
+                left: 640px;
                 background: radial-gradient(#44006b, #ad1fff);
                 overflow: hidden;
             }
@@ -77,7 +113,7 @@
                 background-color: hsla(0, 0%, 100%, 0.9) !important;
                 backdrop-filter: saturate(200%) blur(25px);
                 border-top-left-radius: 75px;
-                border-bottom-right-radius: 75px;
+                border-top-right-radius: 75px;
             }
         </style>
 
@@ -89,45 +125,60 @@
         </svg>
 
         <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
-            @if (isset($error))
-                <div class="row">
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
-                            aria-label="Danger:">
-                            <use xlink:href="#exclamation-triangle-fill" />
-                        </svg>
-                        <strong>{{ $error }}</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                </div>
-            @endif
-            <div class="row">
-                <form method="post" action="/logout">
-                    @csrf
-                    <button class="w-15 btn btn-lg btn-danger" type="submit">Sign Out</button>
-                </form>
-            </div>
-            <div class="row align-items-center g-lg-5 py-5">
-                <div class="col-lg-7 text-center text-lg-start">
-                    <h1 class="display-4 fw-bold lh-1 mb-3 text-white">Todolist</h1>
-                </div>
-                <div class="col-md-10 mx-auto col-lg-5">
-                    <form class="p-4 p-md-5 border rounded-3 bg-light" method="post" action="/todolist">
-                        @csrf
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="todo" placeholder="todo">
-                            <label for="todo">Todo</label>
+            <div class="row gx-lg-5 align-items-center mb-5">
+                @if (isset($error))
+                    <div class="row">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+                                aria-label="Danger:">
+                                <use xlink:href="#exclamation-triangle-fill" />
+                            </svg>
+                            <strong>{{ $error }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
                         </div>
-                        <button class="w-100 btn btn-lg btn-primary" type="submit">Add Todo</button>
+                    </div>
+                @endif
+                <div class="">
+                    <form method="post" action="/logout">
+                        @csrf
+                        <button class="w-15 btn btn-lg btn-danger" type="submit">Sign Out</button>
                     </form>
                 </div>
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="display-4 fw-bold lh-1 mb-3 text-white">Todo List</h1>
+                </div>
+
+                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                    <div id="radius-shape-1-3" class="position-absolute rounded-circle shadow-5-strong"></div>
+                    <div id="radius-shape-1-2" class="position-absolute rounded-circle shadow-5-strong"></div>
+                    <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                    <div id="radius-shape-2-3" class="position-absolute rounded-circle shadow-5-strong"></div>
+                    <div id="radius-shape-2-2" class="position-absolute rounded-circle shadow-5-strong"></div>
+                    <div id="radius-shape-2" class="position-absolute rounded-circle shadow-5-strong"></div>
+
+                    <div class="bg-glass">
+                        <div class="card-body px-4 py-5 px-md-5">
+                            <form method="post" action="/todoList">
+                                @csrf
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="todo" placeholder="todo">
+                                    <label for="todo">Todo</label>
+                                </div>
+                                <button class="w-100 btn btn-lg text-white"
+                                    style="background-color: hsl(218, 41%, 25%);" type="submit">Add Todo</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
+            {{-- disini --}}
             <div class="row align-items-right g-lg-5 py-5">
                 <div class="mx-auto">
                     <form id="deleteForm" method="post" style="display: none">
                         @csrf
                     </form>
-                    <table class="table table-striped">
+                    <table class="table table-striped text-white">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -137,11 +188,14 @@
                         </thead>
                         <tbody>
                             @foreach ($todoList as $todo)
-                                <tr>
-                                    <th scope="row">{{ $todo['id'] }}</th>
-                                    <td>{{ $todo['todo'] }}</td>
+                                <tr class="text-white">
+                                    <th scope="row" class="text-white">{{ $todo['id'] }}</th>
+                                    <td class="text-white">{{ $todo['todo'] }}</td>
                                     <td>
-                                        <button class="w-100 btn btn-lg btn-danger" type="submit">Remove</button>
+                                        <form action="/todoList/{{ $todo['id'] }}/delete" method="POST">
+                                            @csrf
+                                            <button class="w-100 btn btn-lg btn-danger" type="submit">Remove</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -153,6 +207,7 @@
         <footer>
             {{-- Footer Social Media --}}
         </footer>
+
     </section>
     <!-- Section: Design Block -->
 </body>
